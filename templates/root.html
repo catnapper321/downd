@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Test Page</title>
+</head>
+<body>
+    <!-- <button onclick="kick();">Kick</button> -->
+    <div id="sse">
+    </div>
+</body>
+</html>
+<script>
+    let eventSource = new EventSource("sse");
+    eventSource.onmessage = function(event) {
+        <!-- console.log(event.data); -->
+        document.getElementById("sse").innerHTML = event.data;
+    };
+    kick();
+    function kick() {
+        fetch("sse", { method: "POST" });
+    }
+</script>

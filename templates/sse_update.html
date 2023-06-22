@@ -1,0 +1,37 @@
+<h1>{{state}}</h1>
+<div>
+    <p><strong>
+    {% match title %}
+    {% when Some with (n) %}
+    {{n}}
+    {% when None %}
+    None 
+    {% endmatch %}
+    </strong></p>
+    {% match progress %}
+        {% when Some with (n) %}
+            <progress value={{n}}>{{n}}%</progress>
+        {% when None %}
+            <progress value=0.0></progress>
+    {% endmatch %}
+    |
+    {% match rate_h %}
+        {% when Some with (n) %}
+            {{n}}
+        {% when None %}
+            None 
+    {% endmatch %}
+    |
+    {% match eta %}
+        {% when Some with (n) %}
+            {{n}}s
+        {% when None %}
+            None 
+    {% endmatch %}
+</div>
+<h2>Queue</h2>
+<ul id="queue">
+{% for url in queue %}
+    <li>{{url}}</li>
+{% endfor %}
+</ul>

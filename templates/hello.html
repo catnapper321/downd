@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Test Page</title>
+</head>
+<body>
+    <h1>Updates</h1>
+    </ul>
+    <div id="sse">
+    </div>
+
+</body>
+</html>
+<script>
+    document.getElementById("demo").innerHTML = "Hello JavaScript!";
+    document.getElementById("queue").innerHTML = "<li>BLARG</li>";
+
+    let eventSource = new EventSource("sse");
+    eventSource.onmessage = function(event) {
+        document.getElementById("sse").innerHTML = event.data;
+    };
+</script>
